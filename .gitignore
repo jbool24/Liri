@@ -38,7 +38,6 @@ jspm_packages
 
 # Private
 data
-.gitignore
 **/.eslintrc
 cyrpd.unlock
 *.lock.js

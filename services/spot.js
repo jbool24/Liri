@@ -1,16 +1,15 @@
 //----Dependancies -----------------
 const Banner = require('../lib/banner')
 const spotify = require('../lib/spotify');
-// const spotify = require('spotify');
 const colors = require('colors');
 const util = require('util');
 
-//----Marquee ----------------------
-const banner = new Banner("SPOTIFY -- SEARCH");
-banner.show();
-//----End Marquee ------------------
-
 function findSong(songName) {
+    //----Marquee ----------------------
+    const banner = new Banner("SPOTIFY -- SEARCH");
+    banner.show();
+    //----End Marquee ------------------
+
     const query = {
         type: 'track',
         query: songName || 'The Sign',
@@ -21,10 +20,9 @@ function findSong(songName) {
     spotify.search(query, onSearchCallback);
 }
 
-
 function onSearchCallback(e, data) {
     //---- Construct display info if no errors
-    
+
     if (!e) {
         for (let i in data.tracks.items) {
             const item = data.tracks.items[i];
