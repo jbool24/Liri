@@ -10,6 +10,6 @@ switch (args[0]) {
         spotify(args.slice(1).join(' '));
         break;
     case "movie-this":
-        movies("The Calling")
+        movies(args.slice(1).join(' ')); //"The Calling"
         break;
 }
