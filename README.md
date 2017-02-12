@@ -19,9 +19,12 @@ The file must be an Object of Objects each containing the keys for each API. You
   "TMDB_API": {
       "api_key":          "<your credentials>",
   }
-}```
+}
+```
+
 
 After you clone this repository and add your keys.json file make sure you run:
+
 
 ```bash
 # change into cloned directory.
@@ -69,7 +72,7 @@ node liri spotify-this-song <song name>
 
 ### The Movie Database
 
-For a quick movie search.
+For a quick movie search
 
 ```bash
 node liri movie-this <some movie title>
