@@ -1,4 +1,4 @@
-//----Dependancies------------------
+//----Dependancies -----------------
 const spotify = require('spotify');
 const colors = require('colors');
 const util = require('util');
@@ -8,30 +8,34 @@ const base = "/";
 const border = base.repeat(68);
 const title = "SPOTIFY -- SEARCH ";
 const titleLen = title.length;
-
-console.log(border);
-console.log("///// " + colors.blue.bold(title) + base.repeat(62 - titleLen));
-console.log(border);
+const marquee = border + "\n"
+                       + "///// "
+                       + colors.blue.bold(title)
+                       + base.repeat(62 - titleLen)
+                       + "\n"
+                       + border;
+//----End Marquee ------------------
 
 
 function findSong(songName) {
     const query = { type: 'track', query: songName || 'The Sign' };
 
+    console.log(marquee);
     console.log("\n", colors.bold.underline("Results for " + songName.toUpperCase(), "\n"));
-    spotify.search(query, getInfo);
+    spotify.search(query, onSearchCallback);
 }
 
 
-function getInfo(e, data) {
+function onSearchCallback(e, data) {
 
     //---- Construct display info if no errors
     if (!e) {
-        for (i in data.tracks.items) {
-            var item = data.tracks.items[i];
+        for (let i in data.tracks.items) {
+            const item = data.tracks.items[i];
             //------ Create artists list
 
-            var artistList = "";
-            for (artist in item.artists) {
+            let artistList = "";
+            for (let artist in item.artists) {
 
                 artistList += item.artists[artist].name;
 
@@ -45,6 +49,7 @@ function getInfo(e, data) {
             console.log("   " + colors.underline("Album") + ": " + item.album.name);
             console.log("   " + colors.underline("Artists") + ": " + colors.cyan(artistList));
             console.log("   " + colors.underline("Preview") + ": " + item.preview_url.toString());
+            console.log("   " + colors.underline("Popularity") + ": " + item.popularity.toString());
             console.log("\n", "-".repeat(68))
         }
 
